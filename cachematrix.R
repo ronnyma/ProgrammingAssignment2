@@ -30,8 +30,7 @@ makeCacheMatrix <- function(x = matrix()) {
 }
 
 
-## Similar to solve(x); where x is a R-matrix. Takes a 
-## makeCacheMatrix and returns the inverse.
+## Takes a makeCacheMatrix and returns the inverse.
 ## If no inverse is cached, a calculation is performed
 
 cacheSolve <- function(x, ...) {
