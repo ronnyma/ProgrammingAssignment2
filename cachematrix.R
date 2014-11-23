@@ -6,7 +6,7 @@
 ##                  to save time when available. 
 
 
-
+## makeCacheMatrix():
 ## Takes a matrix M as argument and returns a list of functions
 ## operating on the matrix: nameCacheMatrix(M)
 ##
@@ -39,6 +39,7 @@ makeCacheMatrix <- function(x = matrix()) {
 }
 
 
+## cacheSolve():
 ## Takes a makeCacheMatrix-list L and returns the inverse
 ## of L's contained matrix. This may or may not be cached.
 ## If no inverse is cached, a calculation is performed. 
