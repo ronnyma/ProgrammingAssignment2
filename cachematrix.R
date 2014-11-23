@@ -1,15 +1,47 @@
-## Put comments here that give an overall description of what your
-## functions do
+## makeCacheMatrix: a more elaborated matrix object, which supports caching.
+## cacheSolve:      similar to the R-function solve(M), but will use cached results
+##                  when this is available. 
 
-## Write a short comment describing this function
+## Takes a matrix as argument and returns a list of functions. If
+## setMat() is called, the cached inverse is expunged.
+##
+## +setMat: set the matrix, if needed. Will also clear the cached inverse.
+## +getMat: return the matrix
+## -setInv: set the inverse
+## -getInv: get the inverse
 
 makeCacheMatrix <- function(x = matrix()) {
+    inv <- NULL
 
+    setMat <- function(y) {
+        x <<- y
+        inv <<- NULL
+    }
+    getMat <- function() return(x)
+
+    setInv <- function(i = matrix(i)) {
+        inv <<- i 
+    }
+    getInv <- function() return(inv)
+
+    # Now, build the List to be returned
+    invisible(list(setMat = setMat, getMat = getMat,
+         setInv = setInv, getInv = getInv))
 }
 
 
-## Write a short comment describing this function
+## Similar to solve(x); where x is a R-matrix. Takes a 
+## makeCacheMatrix and returns the inverse.
+## If no inverse is cached, a calculation is performed
 
 cacheSolve <- function(x, ...) {
-        ## Return a matrix that is the inverse of 'x'
+    inv <- x$getInv()
+    if(!is.null(inv)) {
+        message("Getting cached data..")
+        return(inv)
+    }
+    mat <- x$getMat()
+    inv <- solve(mat)
+    x$setInv(inv)
+    inv
 }
