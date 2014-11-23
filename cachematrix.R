@@ -8,13 +8,13 @@
 
 
 ## Takes a matrix M as argument and returns a list of functions
-## operating on the matrix.
+## operating on the matrix: nameCacheMatrix(M)
 ##
 ## +setMat(M): set the matrix, if needed. Will also clear the cached inverse.
 ## +getMat(): return the matrix
-## +getInv(): get the inverse
 ##
-##  The function below is usually only called by cacheSolve()
+##  The functions below is usually only called by cacheSolve()
+## -getInv(): get the inverse
 ## -setInv(solve(M)): set the inverse
 
 makeCacheMatrix <- function(x = matrix()) {
